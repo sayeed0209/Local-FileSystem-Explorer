@@ -12,12 +12,12 @@
 <body>
     <div class="container">
     <!-- Bootstrap NavBar -->
-        <nav class="navbar navbar-expand-md navbar-dark bg-primary">
+        <nav class="navbar navbar-expand-md navbar-dark bg-info">
           <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
           <a class="navbar-brand" href="#">
-            <img src="https://v4-alpha.getbootstrap.com/assets/brand/bootstrap-solid.svg" width="30" height="30" class="d-inline-block align-top" alt="">
+            <!-- <img src="https://v4-alpha.getbootstrap.com/assets/brand/bootstrap-solid.svg" width="30" height="30" class="d-inline-block align-top" alt=""> -->
             <span class="menu-collapsed">Local-FileSystem-Explorer</span>
           </a>
           <form class="form-inline">
@@ -62,13 +62,13 @@
             </a>
             <!-- Submenu content -->
             <div id='submenu1' class="collapse sidebar-submenu">
-                <a href="#" class="list-group-item list-group-item-action bg-dark text-white">
+                <a href="#" class="list-group-item list-group-item-action list-group-item-info text-dark">
                     <span class="menu-collapsed">Charts</span>
                 </a>
-                <a href="#" class="list-group-item list-group-item-action bg-dark text-white">
+                <a href="#" class="list-group-item list-group-item-action list-group-item-info text-dark">
                     <span class="menu-collapsed">Reports</span>
                 </a>
-                <a href="#" class="list-group-item list-group-item-action bg-dark text-white">
+                <a href="#" class="list-group-item list-group-item-action list-group-item-info text-dark">
                     <span class="menu-collapsed">Tables</span>
                 </a>
             </div>  
@@ -78,12 +78,14 @@
     <!-- MAIN -->
             <div class="col-10 ml-4 mt-4">
                     
-                <table class="table table-hover table-bordered" id="table">
-                    <thead>
+                <table class="table table-hover table-bordered table-warning" id="table">
+                    <thead class="table-info">
                         <tr>
                         <th scope="col">Name</th>
                         <th scope="col">Size</th>
                         <th scope="col">Modified</th>
+                        <th scope="col">Update</th>
+                        <th scope="col">Delete</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -91,12 +93,16 @@
                         <th scope="row">1</th>
                         <td>Mark</td>
                         <td>Otto</td>
+                        <td><button type="button" class="btn btn-warning">Update</button></td>
+                        <td><button type="button" class="btn btn-danger">Delete</button></td>
                         
                         </tr>
                         <tr>
                         <th scope="row">2</th>
                         <td>Jacob</td>
                         <td>Thornton</td>  
+                        <td><button type="button" class="btn btn-warning">Update</button></td>
+                        <td><button type="button" class="btn btn-danger">Delete</button></td>
                         </tr>
             </tbody>
             </table>
@@ -112,19 +118,23 @@
         <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
           <div class="modal-dialog" role="document">
             <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Create new folder</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">&times;</span>
-                </button>
-              </div>
-              <div class="modal-body">
-                <input type="text" id="name_input"> 
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary" id="save_file">Save folder</button>
-              </div>
+              <form action="script.php" method="POST">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">Create new folder</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+
+                <div class="modal-body">
+                  <input type="text" id="name_input" name="folder"> 
+                </div>
+
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                  <button type="submit" name="submit" class="btn btn-primary" id="save_file">Save folder</button>
+                </div>
+              </form>
             </div>
           </div>
         </div>

@@ -16,18 +16,3 @@ $(document).ready(function() {
   } 
 })
 
-// event listeners for create folder 
-$('#save_file').click(function(e){
-      const createEl = "create";
-      const name =$('#name_input').val();
-      $.ajax({
-        url:"script.php",
-        method:"post",
-        data:{createEl:createEl,
-                name:name},
-        success:function(data){
-          $('#table').append(data)
-    }
-  })
-
-})
