@@ -13,3 +13,22 @@ $(document).ready(function() {
     })
   } 
 })
+
+// event listeners for create folder 
+$('#btn-create').click(function(e){
+
+function createItems () {
+  const createEl = "create";
+  $.ajax({
+    url:"script.php",
+    method:"post",
+    data:{createEl:createEl},
+    success:function(data){
+      $('#table').append(data)
+    }
+  })
+
+}
+
+
+})
