@@ -34,9 +34,3 @@
       }
     }
   }
-
-  if(isset($_POST["createEl"])){
-        if($_POST["createEl"]==="create"){
-            mkdir('root');
-        }
-  }

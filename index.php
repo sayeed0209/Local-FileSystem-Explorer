@@ -49,7 +49,7 @@
         <ul class="list-group">
             <!-- Separator with title -->
             <li class="list-group-item sidebar-separator-title text-muted d-flex align-items-center menu-collapsed">
-            <button type="button" class="btn btn-info col-12" id="btn-create">New</button>
+            <button type="button" class="btn btn-info col-12" data-toggle="modal" data-target="#exampleModal" id="btn-create">New</button>
             </li>
             <!-- /END Separator -->
             <!-- Menu with submenu -->

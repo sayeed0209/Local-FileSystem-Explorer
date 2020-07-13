@@ -19,7 +19,7 @@ $(document).ready(function() {
 // event listeners for create folder 
 $('#save_file').click(function(e){
       const createEl = "create";
-      const name =$('#name-input').val();
+      const name =$('#name_input').val();
       $.ajax({
         url:"script.php",
         method:"post",
