@@ -17,6 +17,8 @@
             <th scope='col'><img src='https://image.freepik.com/free-vector/illustration-data-folder-icon_53876-6329.jpg' width='30' height='30'><a href=''>$folder</a></th>
             <th scope='col'>$size bytes</th>
             <th scope='col'>$modified</th>
+            <td><button type='button' class='btn btn-warning'>Update</button></td>
+            <td><button type='button' class='btn btn-danger'>Delete</button></td>
         </tr>";
       };
 
@@ -30,6 +32,8 @@
             <th scope='col'><img src='https://cdn3.iconfinder.com/data/icons/brands-applications/512/File-512.png' width='20' height='20'>$file</th>
             <th scope='col'>$size bytes</th>
             <th scope='col'>$modified</th>
+            <td><button type='button' class='btn btn-warning'>Update</button></td>
+            <td><button type='button' class='btn btn-danger'>Delete</button></td>
         </tr>";
       }
     }
