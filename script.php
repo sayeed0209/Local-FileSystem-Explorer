@@ -14,7 +14,7 @@
         $modified = date ("F d Y H:i:s", filemtime($folder));
 
         echo "<tr>
-            <th scope='col'><img src='https://image.freepik.com/free-vector/illustration-data-folder-icon_53876-6329.jpg' width='30' height='30'>$folder</th>
+            <th scope='col'><img src='https://image.freepik.com/free-vector/illustration-data-folder-icon_53876-6329.jpg' width='30' height='30'><a href=''>$folder</a></th>
             <th scope='col'>$size bytes</th>
             <th scope='col'>$modified</th>
         </tr>";
