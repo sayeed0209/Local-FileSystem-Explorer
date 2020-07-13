@@ -34,3 +34,10 @@
       }
     }
   }
+
+  if(isset($_POST["submit"])) {
+    if($_POST["folder"]) {
+      mkdir($_POST["folder"]);
+      header("Location: index.php");
+    }
+  }
