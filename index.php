@@ -76,9 +76,9 @@
     </div><!-- sidebar-container END -->
 
     <!-- MAIN -->
-            <div class="col-10 ml-4 mt-4" id="table">
+            <div class="col-10 ml-4 mt-4">
                     
-                <table class="table table-hover table-bordered">
+                <table class="table table-hover table-bordered" id="table">
                     <thead>
                         <tr>
                         <th scope="col">Name</th>
