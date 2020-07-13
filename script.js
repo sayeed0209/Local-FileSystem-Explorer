@@ -8,7 +8,7 @@ $(document).ready(function() {
       method: "POST",
       data: {action:action},
       success: function(data) {
-        $('#').html(data)
+        $('#table').html(data)
       }
     })
   } 
