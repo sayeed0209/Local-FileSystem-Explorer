@@ -1,39 +1,42 @@
 <?php
 
-if (isset($_POST["action"])) {
+function loadContent($path) {
 
-  if ($_POST["action"] === "load") {
+  $folders = new DirectoryIterator($path);
 
-    $path = 'root/';
+  foreach ($folders as $folder) {
+    if ($folder->isDot()) continue;
+    $type = $folder->getType();
+    $name = $folder->getFilename();
+    var_dump($name);
+    $size = $folder->getSize();
+    $modified = date("F d Y H:i:s.", ($folder->getATime()));
 
-    $folders = new DirectoryIterator($path);
-
-    foreach ($folders as $folder) {
-      if ($folder->isDot()) continue;
-      $type = $folder->getType();
-      $name = $folder->getFilename();
-      var_dump($name);
-      $size = $folder->getSize();
-      $modified = date("F d Y H:i:s.", ($folder->getATime()));
-
-      if ($folder->isDir()) {
-        echo "<tr>
-            <th scope='col'><img src='https://image.freepik.com/free-vector/illustration-data-folder-icon_53876-6329.jpg' width='30' height='30'><a href=''>$name</a></th>
-            <th scope='col'>$size bytes</th>
-            <th scope='col'>$modified</th>
-            <td><button type='button' class='btn btn-warning' data-name='$name' id='update'>Update</button></td>
-            <td><button type='button' class='btn btn-danger'>Delete</button></td>
-        </tr>";
-      } else {
-        echo "<tr>
-            <th scope='col'><img src='https://image.freepik.com/free-vector/illustration-data-folder-icon_53876-6329.jpg' width='30' height='30'><a href=''>$name</a></th>
-            <th scope='col'>$size bytes</th>
-            <th scope='col'>$modified</th>
-            <td><button type='button' class='btn btn-warning' data-name='$name' id='update'>Update</button></td>
-            <td><button type='button' class='btn btn-danger'>Delete</button></td>
-            </tr>";
-      }
+    if ($folder->isDir()) {
+      echo "<tr>
+          <th scope='col'><img src='https://image.freepik.com/free-vector/illustration-data-folder-icon_53876-6329.jpg' width='30' height='30'><a href='#' id='$name' class='link'>$name</a></th>
+          <th scope='col'>$size bytes</th>
+          <th scope='col'>$modified</th>
+          <td><button type='button' class='btn btn-warning' data-name='$name' id='update'>Update</button></td>
+          <td><button type='button' class='btn btn-danger'>Delete</button></td>
+      </tr>";
+    } else {
+      echo "<tr>
+          <th scope='col'><img src='https://image.freepik.com/free-vector/illustration-data-folder-icon_53876-6329.jpg' width='30' height='30'><a href=''>$name</a></th>
+          <th scope='col'>$size bytes</th>
+          <th scope='col'>$modified</th>
+          <td><button type='button' class='btn btn-warning' data-name='$name' id='update'>Update</button></td>
+          <td><button type='button' class='btn btn-danger'>Delete</button></td>
+          </tr>";
     }
+
+  }
+
+}
+
+if (isset($_POST["action"])) {
+  if ($_POST["action"] === "load") {
+    loadContent('root/');   
   }
 }
 
@@ -54,3 +57,13 @@ if ($_POST["action"] === 'change') {
     header("Location: index.php");
   }
 }
+
+
+if ($_POST["action"] === 'folders') {
+
+
+    $fpath = "root/" . $_POST["fname"];
+    
+    loadContent($fpath);
+
+  }
