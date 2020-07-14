@@ -89,3 +89,27 @@ if ($_POST["action"] === 'folders') {
     loadContent($fpath);
 
   }
+
+
+if($_POST['action']=='showfolder'){
+    $dir = array_filter(scandir($_POST['actualPath']),function($item){
+      return is_dir($_POST['actualPath'].$item);
+      
+    });
+    
+  $dir = array_diff($dir,array('.','..'));
+  $dir=array_values($dir);
+  
+  echo json_encode($dir);
+}
+
+// // remove file
+// if ($_POST['action'] == "delete_file") {
+//   if (file_exists($_POST["path"])) {
+//     $path = "root/";
+  
+//     // unlink($_POST['path'].$path);
+//  rmdir($path.$_POST['path']);
+//     echo 'file deleted';
+//   }
+// }
