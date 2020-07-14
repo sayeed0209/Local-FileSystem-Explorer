@@ -50,11 +50,33 @@ if (isset($_POST["submit"])) {
 
 if ($_POST["action"] === 'change') {
   if (!file_exists($_POST["folder"])) {
-    rename($_POST["old_name"],$_POST["folder"]);
+    $path = 'root/';
+    rename($path . $_POST["old_name"], $path . $_POST["folder"]);
     echo "Folder name changed";
+    header("Location: index.php");
   } else {
     echo 'folder already created';
-    header("Location: index.php");
+  }
+}
+
+// remove folder
+if ($_POST['action'] == "delete_file") {
+  $path = "root/";
+  if(is_dir($path.$_POST["path"])) {
+    $path = "root/";
+    rmdir($path.$_POST['path']);
+    echo 'file deleted';
+  }
+}
+
+// remove file
+if ($_POST['action'] == "delete_file") {
+  if (file_exists($_POST["path"])) {
+    $path = "root/";
+  
+    // unlink($_POST['path'].$path);
+ rmdir($path.$_POST['path']);
+    echo 'file deleted';
   }
 }
 
