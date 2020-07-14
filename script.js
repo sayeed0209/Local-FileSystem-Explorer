@@ -12,6 +12,7 @@ $(document).ready(function() {
       data: {action:action,
       old_name:old_name},
       success: function(data) {
+        console.log(data);
         $('#table').append(data)
       }
     })
