@@ -10,6 +10,7 @@ $(document).ready(function() {
       method: "POST",
       data: {action:action},
       success: function(data) {
+        console.log(data);
         $('#table').append(data)
       }
     })
