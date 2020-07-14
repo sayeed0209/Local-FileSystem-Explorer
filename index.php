@@ -66,7 +66,7 @@
 
     <!-- MAIN -->
             <div class="col-10 ml-4 mt-4">
-                    
+            <div class="col-10 ml-4 mt-4" id="path">Current path: <span>root</span>/</div>
                 <table class="table table-hover table-bordered table-warning" id="table">
                     <thead class="table-info">
                         <tr>

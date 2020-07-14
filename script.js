@@ -46,6 +46,7 @@ $(document).ready(function() {
                 </tr>
             </thead>`)
                 $('#table').append(data)
+                $("#path").append(fname)
               }
             })
           })
@@ -73,6 +74,7 @@ $(document).ready(function() {
   
  
 })
+
 $(document).on('click','.delete_file',function(e){
   console.log(e.target)
   let path = $(this).attr('id')

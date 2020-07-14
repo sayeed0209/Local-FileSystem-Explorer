@@ -18,15 +18,15 @@ function loadContent($path) {
           <th scope='col'>$size bytes</th>
           <th scope='col'>$modified</th>
           <td><button type='button' class='btn btn-warning' data-name='$name' id='update'>Update</button></td>
-          <td><button type='button' class='btn btn-danger'>Delete</button></td>
+          <td><button type='button' class='delete_file btn btn-danger' id='$name'>Delete</button></td>
       </tr>";
     } else {
       echo "<tr>
           <th scope='col'><img src='https://image.freepik.com/free-vector/illustration-data-folder-icon_53876-6329.jpg' width='30' height='30'><a href=''>$name</a></th>
           <th scope='col'>$size bytes</th>
           <th scope='col'>$modified</th>
-          <td><button type='button' class='btn btn-warning' data-name='$name' id='update'>Update</button></td>
-          <td><button type='button' class='btn btn-danger'>Delete</button></td>
+          <td><button type='button' class='delete_file btn btn-warning' data-name='$name' id='update'>Update</button></td>
+          <td><button type='button' class='btn btn-danger' id='$name'>Delete</button></td>
           </tr>";
     }
 
@@ -70,7 +70,7 @@ if ($_POST['action'] == "delete_file") {
 }
 
 // remove file
-if ($_POST['action'] == "delete_file") {
+/*if ($_POST['action'] == "delete_file") {
   if (file_exists($_POST["path"])) {
     $path = "root/";
   
@@ -78,7 +78,7 @@ if ($_POST['action'] == "delete_file") {
  rmdir($path.$_POST['path']);
     echo 'file deleted';
   }
-}
+}*/
 
 
 if ($_POST["action"] === 'folders') {
