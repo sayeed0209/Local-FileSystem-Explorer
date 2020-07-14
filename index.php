@@ -119,13 +119,13 @@
                   <p>Enter the file name</p>
                   <input type="text" id="name_input" name="folder"> 
                   <input type="hidden" name="action" id="action">
-                  <input type="hidden" name="old_name" id="Old_name">
-                  <button type="submit" name="submit" class="btn btn-primary" id="create_file">Create folder</button>
+                  <input type="hidden" name="old_name" id="old_name">
+                  <button type="submit" class="btn btn-primary" id="rename">Rename</button>
                 </div>
 
                 <div class="modal-footer">
                   <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                  
+                  <button type="submit" name="submit" class="btn btn-primary" id="create_file">Create folder</button>
                 </div>
               </form>
             </div>

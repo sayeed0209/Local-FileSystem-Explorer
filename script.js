@@ -12,18 +12,18 @@ $(document).ready(function() {
       data: {action:action,
       old_name:old_name},
       success: function(data) {
-        console.log(data);
+        // console.log(data);
         $('#table').append(data)
       }
     })
   }
   $(document).on('click','#update',function(e){
     let folderName = $(this).data('name');
-    // console.log(folderName)
+    console.log(folderName)
     $('#old_name').val(folderName);
     $('#name_input').val(folderName);
     $('#action').val('change')
-    $('#create_file').val('Update')
+    $('#rename').val('update')
     $("#change_title").text('Change Folder Name')
     $('#exampleModal').modal('show')
   })
