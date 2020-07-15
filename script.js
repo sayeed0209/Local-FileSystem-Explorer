@@ -12,10 +12,12 @@ $(document).ready(function () {
       method: 'POST',
       data: { action: action, currentPath: path, old_name: old_name },
       success: function (data) {
-        
-        $(".path_info").empty()
+        console.log(data)
+        $(".path_info").remove()
         
         $("#table_container").prepend(`<div class="path_info" id="path">${path}</div>`)
+       
+        
 
         let actualPath = $('#path').text();
         console.log(actualPath)
@@ -50,7 +52,29 @@ $(document).ready(function () {
           $(`#f_${element.name}`).on("click", function() {
             
             $('#table').empty()
+            $("#back").remove()
             loadFolders(`${element.path}/${element.name}`)
+
+            $("#table_container").prepend(`<button id="back">Back</button>`)
+
+            $("#back").on("click", function () {
+              $('#table').empty()
+              let path = $("#path").text()
+              let arrayPath = path.split("/")
+              console.log(arrayPath)
+              arrayPath.pop()
+              console.log(arrayPath)
+
+              if(arrayPath.length < 2) {
+                path = "root/"
+              } else {
+                path = arrayPath.join("/")
+              }
+              console.log(path)
+
+              loadFolders(path)
+            
+            })
           })
          
         }
