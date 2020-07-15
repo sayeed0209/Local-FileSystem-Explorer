@@ -25,7 +25,7 @@ include 'upload.php';
       <a class="navbar-brand" href="#">
         <i class="fas fa-book-open" id="logo"></i>
         <button type="button" class="btn btn btn-info my-2 my-sm-0" data-toggle="modal" data-target="#exampleModal" id="btn-create">New<i class="fas fa-plus-circle" id="plus"></i></button>
-        <span class="menu-collapsed">Local-FileSystem-Explorer</span>
+        <span class="menu-collapsed"></span>
       </a>
 
       <form action="upload.php" class="upload" method="POST" enctype="multipart/form-data">
@@ -37,7 +37,7 @@ include 'upload.php';
 
       <form class="form-inline">
         <input class="form-control mr-sm-2 ml-5" type="search" placeholder="Search" aria-label="Search" id="search_field">
-        <input class="btn btn btn-info my-2 my-sm-0" type="submit" id="search">Search</input>
+        <input class="btn btn btn-info my-2 my-sm-0" type="submit" id="search"></input>
 
       </form>
 
@@ -60,32 +60,20 @@ include 'upload.php';
       <!-- MAIN -->
       <div class="col-9 mt-4" id="table_container">
 
-        <table class="table table-hover table-bordered table-warning shadow-lg p-3 mb-5 rounded" id="table">
+        <table class="table table-hover shadow-lg p-3 mb-5 rounded" id="table">
           <thead class="table-info">
             <tr>
               <th scope="col">Name</th>
               <th scope="col">Size</th>
+              <th scope="col">Created</th>
               <th scope="col">Modified</th>
               <th scope="col">Update</th>
               <th scope="col">Delete</th>
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <th scope="row">1</th>
-              <td>Mark</td>
-              <td>Otto</td>
-              <td><button type="button" class="btn btn-warning" id="update" data-name="folder">Update</button></td>
-              <td><button type="button" class="btn btn-danger" id='delete'>Delete</button></td>
-
-            </tr>
-            <tr>
-              <th scope="row">2</th>
-              <td>Jacob</td>
-              <td>Thornton</td>
-              <td><button type="button" class="btn btn-warning" id="update">Update</button></td>
-              <td><button type="button" class="btn btn-danger" id='delete'>Delete</button></td>
-            </tr>
+            
+            
           </tbody>
         </table>
 

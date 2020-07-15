@@ -33,3 +33,7 @@ input[type="file"] {
     text-align: center;
     cursor: pointer;
 }
+
+.icons {
+    margin-right: 10px;
+}

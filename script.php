@@ -16,7 +16,12 @@ function loadContent($path) {
     $folderObject->type = $folder->getType();
     $folderObject->size = $folder->getSize();
     $folderObject->path = $folder->getPath();
-    $folderObject->date = date("F d Y H:i:s.", ($folder->getATime()));
+    $folderObject->date = date("d/m/Y H:i:s", ($folder->getATime()));
+    $folderObject->modified = date("d/m/Y H:i:s", ($folder->getCTime()));
+    $folderObject->modified = date("d/m/Y H:i:s", ($folder->getCTime()));
+    if ($folder->isFile()) {
+      $folderObject->ext = $folder->getExtension();
+  }
 
     array_push($folderArray, $folderObject);
 

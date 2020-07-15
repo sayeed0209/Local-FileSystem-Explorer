@@ -5,9 +5,6 @@ $(document).ready(function () {
   function loadFolders(path) {
     var action = 'load';
     var old_name = $('#old_name').val();
-    var rt = $('#path').text();
-
-
 
     $.ajax({
       url: 'script.php',
@@ -25,44 +22,60 @@ $(document).ready(function () {
         console.log(actualPath)
         
         let elements = JSON.parse(data)
-        console.log(elements)
-        for(let element of elements) {
+        
+        let folders = []
+        let files = []
 
-          if(element.type === "dir") {
+        for (let element of elements) {
+          if (element.type === "dir") {
+            folders.push(element)
+          } else {
+            files.push(element)
+          }
+        }
+        for(let folder of folders) {  
+          
+            let size = sizing(folder);
+
             $('#table').append(`
               <tr>
-              <th scope='col'><img src='https://image.freepik.com/free-vector/illustration-data-folder-icon_53876-6329.jpg' width='30' height='30'><div class="folder_link" id="f_${element.name}">${element.name}</div></th>
-                <th scope='col'>${element.size}</th>
-                <th scope='col'>${element.date}</th>
-                <td><button type='button' class='btn btn-warning' data-name='${element.name}' id='update'>Update</button></td>
-                <td><button type='button' class='delete_file btn btn-danger' id=${element.name}>Delete</button></td>
+              <td scope='col'><p class="folder_link" id="f_${folder.name}"><img src='https://image.flaticon.com/icons/svg/861/861319.svg' width='30' height='30' class="icons">${folder.name}</p></td>
+                <td scope='col'>${size}</td>
+                <td scope='col'>${folder.date}</td>
+                <td scope='col'>${folder.modified}</td>
+                <td><button type='button' class='btn btn-warning' data-name='${folder.name}' id='update'>Update</button></td>
+                <td><button type='button' class='delete_file btn btn-danger' id=${folder.name}>Delete</button></td>
               </tr>
           `)
-            
-          } else if (element.type === "file") {
-            $('#table').append(`
-              <tr>
-                <th scope='col'>${element.name}</th>
-                <th scope='col'>${element.size}</th>
-                <th scope='col'>${element.date}</th>
-                <td><button type='button' class='btn btn-warning' data-name='${element.name}' id='update'>Update</button></td>
-                <td><button type='button' class='delete_file btn btn-danger' id=${element.name}'>Delete</button></td>
-              </tr>
-        `)
-          }
 
-          $(`#f_${element.name}`).on("click", function() {
+          $(`#f_${folder.name}`).on("click", function() {
             
             $('#table').empty()
             $("#back").remove()
-            loadFolders(`${element.path}/${element.name}`)
+            loadFolders(`${folder.path}/${folder.name}`)
             addButton()
             
           })
-         
-        }
-      },
-    });
+            
+          }
+          
+           for (let file of files) {
+
+            let size = sizing(file);
+            let icon_src = getIcon(file.ext)
+            $('#table').append(`
+              <tr>
+                <td scope='col'><p ><img src='${icon_src}' width='30' height='30' class="icons">${file.name}</p></td>
+                <td scope='col'>${size}</td>
+                <td scope='col'>${file.date}</td>
+                <td scope='col'>${file.modified}</td>
+                <td></td>
+                <td></td>
+              </tr>
+        `)
+          }     
+      }
+    })
   }
 
   $("#create_file").on("click", function () {
@@ -180,7 +193,7 @@ $(document).ready(function () {
             })
           } else {
             $("#table_container").append('<div class="d-flex" id="search_results_files"></div>')
-            $("#").append(
+            $("#search_results_files").append(
               `
               <div class="result" id="f_${result.name.slice(0,-4)}">
               <img src="https://image.flaticon.com/icons/svg/779/779550.svg" height="40" width="40"><p>${result.name}</p>
@@ -259,11 +272,12 @@ function addButton() {
             })
 }
 
-const tableBase = `<table class="table table-hover table-bordered table-warning shadow-lg p-3 mb-5 rounded" id="table">
+const tableBase = `<table class="table shadow-lg p-3 mb-5 rounded" id="table">
                       <thead class="table-info">
                         <tr>
                           <th scope="col">Name</th>
                           <th scope="col">Size</th>
+                          <th scope="col">Created</th>
                           <th scope="col">Modified</th>
                           <th scope="col">Update</th>
                           <th scope="col">Delete</th>
@@ -276,7 +290,45 @@ const tableBase = `<table class="table table-hover table-bordered table-warning 
 
 
 
+  function sizing (element) {
+    let size = "";
 
+            if(element.size < 1000) {
+              size = `${element.size} bytes`
+            } else if (element.size < 1000000) {
+              size = `${Math.round(element.size / 1000)} KB`
+            } else {
+              size = `${Math.round(element.size / 1000000)} MB`
+            }
+
+      return size;
+  }
+
+  function getIcon(ext) {
+    let link = "";
+
+    switch (ext) {
+      case "doc" : link = "https://image.flaticon.com/icons/svg/3175/3175581.svg"; break;
+      case "csv" : link = "https://image.flaticon.com/icons/svg/617/617555.svg"; break;
+      case "jpg" : link = "https://image.flaticon.com/icons/svg/864/864115.svg"; break;
+      case "jpg" : link = "https://image.flaticon.com/icons/svg/864/864115.svg"; break;
+      case "png" : link = "https://image.flaticon.com/icons/svg/1979/1979210.svg"; break;
+      case "txt" : link = "https://image.flaticon.com/icons/svg/864/864126.svg"; break;
+      case "ppt" : link = "https://image.flaticon.com/icons/svg/617/617582.svg"; break;
+      case "odt" : link = "https://image.flaticon.com/icons/svg/180/180912.svg"; break;
+      case "pdf" : link = "https://image.flaticon.com/icons/svg/685/685192.svg"; break;
+      case "zip" : link = "https://image.flaticon.com/icons/svg/2911/2911235.svg"; break;
+      case "rar" : link = "https://image.flaticon.com/icons/svg/2911/2911225.svg"; break;
+      case "exe" : link = "https://image.flaticon.com/icons/svg/617/617560.svg"; break;
+      case "svg" : link = "https://image.flaticon.com/icons/svg/617/617590.svg"; break;
+      case "mp3" : link = "https://image.flaticon.com/icons/svg/2425/2425367.svg"; break;
+      case "mp4" : link = "https://image.flaticon.com/icons/svg/499/499465.svg"; break;
+      default: link = "https://image.flaticon.com/icons/svg/546/546391.svg";
+      
+    }
+
+    return link;
+  }
 
 });
 
