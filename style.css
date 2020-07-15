@@ -28,3 +28,8 @@ input[type="file"] {
     cursor: pointer;
 }
 
+.result {
+    margin-left: 5vw;
+    text-align: center;
+    cursor: pointer;
+}

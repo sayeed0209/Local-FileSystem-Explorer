@@ -36,8 +36,8 @@ include 'upload.php';
       </form>
 
       <form class="form-inline">
-        <input class="form-control mr-sm-2 ml-5" type="search" placeholder="Search" aria-label="Search">
-        <input class="btn btn btn-info my-2 my-sm-0" type="submit">Search</input>
+        <input class="form-control mr-sm-2 ml-5" type="search" placeholder="Search" aria-label="Search" id="search_field">
+        <input class="btn btn btn-info my-2 my-sm-0" type="submit" id="search">Search</input>
 
       </form>
 
@@ -71,21 +71,7 @@ include 'upload.php';
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <th scope="row">1</th>
-              <td>Mark</td>
-              <td>Otto</td>
-              <td><button type="button" class="btn btn-warning" id="update" data-name="folder">Update</button></td>
-              <td><button type="button" class="btn btn-danger" id='delete'>Delete</button></td>
-
-            </tr>
-            <tr>
-              <th scope="row">2</th>
-              <td>Jacob</td>
-              <td>Thornton</td>
-              <td><button type="button" class="btn btn-warning" id="update">Update</button></td>
-              <td><button type="button" class="btn btn-danger" id='delete'>Delete</button></td>
-            </tr>
+            
           </tbody>
         </table>
 
