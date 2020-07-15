@@ -23,3 +23,8 @@ label{
 input[type="file"] {
     display: none;
 }
+
+.folder_link {
+    cursor: pointer;
+}
+

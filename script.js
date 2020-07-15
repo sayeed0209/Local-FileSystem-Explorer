@@ -32,8 +32,8 @@ $(document).ready(function () {
               <th scope='col'><img src='https://image.freepik.com/free-vector/illustration-data-folder-icon_53876-6329.jpg' width='30' height='30'><div class="folder_link" id="f_${element.name}">${element.name}</div></th>
                 <th scope='col'>${element.size}</th>
                 <th scope='col'>${element.date}</th>
-                <td><button type='button' class='btn btn-warning' data-name='$name' id='update'>Update</button></td>
-                <td><button type='button' class='delete_file btn btn-danger' id=$name'>Delete</button></td>
+                <td><button type='button' class='btn btn-warning' data-name='${element.name}' id='update'>Update</button></td>
+                <td><button type='button' class='delete_file btn btn-danger' id=${element.name}>Delete</button></td>
               </tr>
           `)
             
@@ -43,8 +43,8 @@ $(document).ready(function () {
                 <th scope='col'>${element.name}</th>
                 <th scope='col'>${element.size}</th>
                 <th scope='col'>${element.date}</th>
-                <td><button type='button' class='btn btn-warning' data-name='$name' id='update'>Update</button></td>
-                <td><button type='button' class='delete_file btn btn-danger' id=$name'>Delete</button></td>
+                <td><button type='button' class='btn btn-warning' data-name='${element.name}' id='update'>Update</button></td>
+                <td><button type='button' class='delete_file btn btn-danger' id=${element.name}'>Delete</button></td>
               </tr>
         `)
           }

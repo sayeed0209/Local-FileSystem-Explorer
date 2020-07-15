@@ -13,5 +13,4 @@ if (isset($_POST['upload'])) {
     $file_error = $_FILES['file']['error'];
     $file_size = $_FILES['file']['size'];
     
-
 }
