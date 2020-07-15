@@ -92,7 +92,7 @@ $(document).ready(function () {
         for (let result of results) {
           if (result.type == "dir") {
             $("#search_results").append(
-              `
+             `
               <div class="result" id="s_${result.name}">
               <img src="https://image.flaticon.com/icons/svg/861/861319.svg" height="40" width="40"><p>${result.name}</p>
               </div>        
@@ -106,7 +106,8 @@ $(document).ready(function () {
               addButton()
             })
           } else {
-            $("#search_results").append(
+            $("#table_container").append('<div class="d-flex" id="search_results_files"></div>')
+            $("#search_results_files").append(
               `
               <div class="result" id="f_${result.name.slice(0,-4)}">
               <img src="https://image.flaticon.com/icons/svg/779/779550.svg" height="40" width="40"><p>${result.name}</p>
