@@ -1,3 +1,7 @@
+<?php
+include 'upload.php';
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -23,9 +27,18 @@
         <button type="button" class="btn btn btn-info my-2 my-sm-0" data-toggle="modal" data-target="#exampleModal" id="btn-create">New<i class="fas fa-plus-circle" id="plus"></i></button>
         <span class="menu-collapsed">Local-FileSystem-Explorer</span>
       </a>
+
+      <form action="upload.php" class="upload" method="POST" enctype="multipart/form-data">
+      <label> Upload File <i class="fas fa-file-download"></i>
+          <input type="file" name="file" >
+        </label>
+        <input type="submit" class="btn btn btn-info my-2 my-sm-0" value="Upload" name="upload">
+      </form>
+
       <form class="form-inline">
-        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn btn-info my-2 my-sm-0" type="submit">Search</button>
+        <input class="form-control mr-sm-2 ml-5" type="search" placeholder="Search" aria-label="Search">
+        <input class="btn btn btn-info my-2 my-sm-0" type="submit">Search</input>
+
       </form>
 
     </nav><!-- NavBar END -->
@@ -34,15 +47,15 @@
     <!-- Bootstrap row -->
     <div class="row" id="body-row">
       <!-- Sidebar -->
-      <div class="col mt-4 ml-4 bg-light text-dark shadow-lg p-3 mb-5 rounded  "> 
-      <div class="row">
+      <div class="col mt-4 ml-4 bg-light text-dark shadow-lg p-3 mb-5 rounded  ">
+        <div class="row">
           <ul id="list-of-folders">
-          <li id="root" ><i class="fas fa-folder" id="rootIcon"></i>root</li>
+            <li id="root"><i class="fas fa-folder" id="rootIcon"></i>root</li>
           </ul>
 
+        </div>
+
       </div>
-      
-    </div>
 
       <!-- MAIN -->
       <div class="col-9 mt-4">

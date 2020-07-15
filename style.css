@@ -1,9 +1,25 @@
-#logo{
-    width:150px;
-}
+/* #logo{
+    width:50px;
+} */
 #plus{
     margin: 5px;
 }
 ul{
     list-style-type: none;
+}
+label{
+    padding: 10px;
+    background: #17a2b8;; 
+    display: table;
+    color: #fff;
+    border-color: #17a2b8;
+ }
+ label:hover{
+     background-color: #28a745;
+ }
+
+
+
+input[type="file"] {
+    display: none;
 }

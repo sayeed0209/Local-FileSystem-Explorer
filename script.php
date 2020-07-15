@@ -55,26 +55,28 @@ if ($_POST["action"] === 'change') {
 // remove folder
 if ($_POST['action'] == "delete_file") {
   $path = "root/";
-  if(is_dir($path.$_POST["path"])) {
+  if (is_dir($path . $_POST["path"])) {
     $path = "root/";
-    rmdir($path.$_POST['path']);
+    rmdir($path . $_POST['path']);
     echo 'file deleted';
   }
 }
 
 
 
-if($_POST['action']=='showfolder'){
-    $dir = array_filter(scandir($_POST['actualPath']),function($item){
-      return is_dir($_POST['actualPath'].$item);
-      
-    });
-    
-  $dir = array_diff($dir,array('.','..'));
-  $dir=array_values($dir);
-  
+if ($_POST['action'] == 'showfolder') {
+  $dir = array_filter(scandir($_POST['actualPath']), function ($item) {
+    return is_dir($_POST['actualPath'] . $item);
+  });
+
+  $dir = array_diff($dir, array('.', '..'));
+  $dir = array_values($dir);
+
   echo json_encode($dir);
 }
+
+
+
 
 // // remove file
 // if ($_POST['action'] == "delete_file") {
