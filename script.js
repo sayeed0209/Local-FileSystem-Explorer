@@ -5,12 +5,14 @@ $(document).ready(function () {
   function loadFolders(path) {
     var action = 'load';
     var old_name = $('#old_name').val();
+    var rt = $('#path').text();
+
 
 
     $.ajax({
       url: 'script.php',
       method: 'POST',
-      data: { action: action, currentPath: path, old_name: old_name },
+      data: { action: action, currentPath: path, old_name: old_name},
       success: function (data) {
         console.log(data)
         $(".path_info").remove()
@@ -61,18 +63,89 @@ $(document).ready(function () {
         }
       },
     });
-
-    $(document).on('click', '#update', function (e) {
-      let folderName = $(this).data('name');
-      console.log(folderName);
-      $('#old_name').val(folderName);
-      $('#name_input').val(folderName);
-      $('#action').val('change');
-      $('#rename').val('update');
-      $('#change_title').text('Change Folder Name');
-      $('#exampleModal').modal('show');
-    });
   }
+
+  $("#create_file").on("click", function () {
+    let path = $('#path').text();
+    let action = "create";
+    let name = $('#name_input').val();
+
+    $.ajax({
+      url: 'new.php',
+      method: 'POST',
+      data: { path: path, action:action, name:name },
+      success: function (data) {
+       console.log(data)
+       location.replace("index.php")
+      },
+    });
+  })
+
+  $("#create_file").on("click", function () {
+    let path = $('#path').text();
+    let action = "create";
+    let name = $('#name_input').val();
+
+    $.ajax({
+      url: 'new.php',
+      method: 'POST',
+      data: { path: path, action:action, name:name },
+      success: function (data) {
+       console.log(data)
+       location.replace("index.php")
+      },
+    });
+  })
+
+
+  $(document).on('click', '#update', function (e) {
+    let folderName = $(this).data('name');
+    console.log(folderName);
+    $('#old_name').val(folderName);
+    $('#name_input').val(folderName);
+    $('#action').val('change');
+    $('#rename').val('update');
+    $('#change_title').text('Change Folder Name');
+    $('#exampleModal').modal('show');
+  });
+
+  $("#rename").on("click", function () {
+    let oldName = $("#old_name").attr("value")
+    let newName = $("#name_input").val()
+    let path = $('#path').text()
+    let action = "change"
+
+    $.ajax({
+      url: 'new.php',
+      method: 'POST',
+      data: { path: path, action:action, newName:newName, oldName: oldName},
+      success: function (data) {
+        location.replace("index.php")
+       
+      },
+    });
+
+  })
+
+  $(document).on('click', '.delete_file', function (e) {
+    let name = $(this).attr('id');
+    let action = 'delete';
+    let path = $('#path').text();
+
+    if (confirm('are you sure you want delete the file?')) {
+      $.ajax({
+        url: 'new.php',
+        method: 'POST',
+        data: { path: path, action: action, name:name },
+        success: function (data) {
+          alert(data);
+          location.replace("index.php");
+  
+        },
+      });
+    }
+  });
+
 
   $("#search").on("click", function(e) {
     e.preventDefault()
@@ -107,7 +180,7 @@ $(document).ready(function () {
             })
           } else {
             $("#table_container").append('<div class="d-flex" id="search_results_files"></div>')
-            $("#search_results_files").append(
+            $("#").append(
               `
               <div class="result" id="f_${result.name.slice(0,-4)}">
               <img src="https://image.flaticon.com/icons/svg/779/779550.svg" height="40" width="40"><p>${result.name}</p>
@@ -128,27 +201,6 @@ $(document).ready(function () {
     })
   })
   
-  
-  
-  $(document).on('click', '.delete_file', function (e) {
-    console.log(e.target);
-    let path = $(this).attr('id');
-    console.log(path);
-    let action = 'delete_file';
-    console.log(action);
-    if (confirm('are you sure you want delete the file?')) {
-      $.ajax({
-        url: 'script.php',
-        method: 'POST',
-        data: { path: path, action: action },
-        success: function (data) {
-          alert(data);
-  
-          console.log(data);
-        },
-      });
-    }
-  });
   
   var actualPath = 'root/';
   $('#root').data('path','root/').click(function () {

@@ -33,10 +33,10 @@ if (isset($_POST["action"])) {
   }
 }
 
-if (isset($_POST["submit"])) {
+/* if (isset($_POST["submit"])) {
   if ($_POST["folder"]) {
-    $path = "root/";
-    mkdir($path . $_POST["folder"]);
+    $path = $_POST["rt"];
+    mkdir($path . "/" . $_POST["folder"]);    
     header("Location: index.php");
   }
 }

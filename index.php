@@ -71,7 +71,21 @@ include 'upload.php';
             </tr>
           </thead>
           <tbody>
-            
+            <tr>
+              <th scope="row">1</th>
+              <td>Mark</td>
+              <td>Otto</td>
+              <td><button type="button" class="btn btn-warning" id="update" data-name="folder">Update</button></td>
+              <td><button type="button" class="btn btn-danger" id='delete'>Delete</button></td>
+
+            </tr>
+            <tr>
+              <th scope="row">2</th>
+              <td>Jacob</td>
+              <td>Thornton</td>
+              <td><button type="button" class="btn btn-warning" id="update">Update</button></td>
+              <td><button type="button" class="btn btn-danger" id='delete'>Delete</button></td>
+            </tr>
           </tbody>
         </table>
 
@@ -86,7 +100,7 @@ include 'upload.php';
       <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
           <div class="modal-content">
-            <form action="script.php" method="POST">
+            <form>
               <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalLabel"><span id="change_title"> Create new folder</span> </h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -99,12 +113,12 @@ include 'upload.php';
                 <input type="text" id="name_input" name="folder">
                 <input type="hidden" name="action" id="action">
                 <input type="hidden" name="old_name" id="old_name">
-                <button type="submit" class="btn btn-primary" id="rename">Rename</button>
+                <button type="button" class="btn btn-primary" id="rename">Rename</button>
               </div>
 
               <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="submit" name="submit" class="btn btn-primary" id="create_file">Create folder</button>
+                <button type="button" name="submit" class="btn btn-primary" id="create_file">Create folder</button>
               </div>
             </form>
           </div>
