@@ -1,35 +1,35 @@
 <?php
 
+function loadContent($path) {
+
+  $folderArray = array();
+
+
+  $folders = new DirectoryIterator($path);
+
+  foreach ($folders as $folder) {
+    if ($folder->isDot()) continue;
+
+    $folderObject = new stdClass();
+
+    $folderObject->name = $folder->getFilename();
+    $folderObject->type = $folder->getType();
+    $folderObject->size = $folder->getSize();
+    $folderObject->path = $folder->getPath();
+    $folderObject->date = date("F d Y H:i:s.", ($folder->getATime()));
+
+    array_push($folderArray, $folderObject);
+
+  }
+
+  $encodedArray =json_encode($folderArray);
+  echo $encodedArray;
+
+}
+
 if (isset($_POST["action"])) {
-
   if ($_POST["action"] === "load") {
-    $path = 'root/';
-    $folders = new DirectoryIterator($path);
-    foreach ($folders as $folder) {
-      if ($folder->isDot()) continue;
-      $type = $folder->getType();
-      $name = $folder->getFilename();
-      $size = $folder->getSize();
-      $modified = date("F d Y H:i:s.", ($folder->getATime()));
-
-      if ($folder->isDir()) {
-        echo "<tr>
-            <th scope='col'><img src='https://image.freepik.com/free-vector/illustration-data-folder-icon_53876-6329.jpg' width='30' height='30'><a href=''>$name</a></th>
-            <th scope='col'>$size bytes</th>
-            <th scope='col'>$modified</th>
-            <td><button type='button' class='btn btn-warning' data-name='$name' id='update'>Update</button></td>
-            <td><button type='button' class='delete_file btn btn-danger' id='$name' >Delete</button></td>
-        </tr>";
-      } else {
-        echo "<tr>
-            <th scope='col'><img src='https://image.freepik.com/free-vector/illustration-data-folder-icon_53876-6329.jpg' width='30' height='30'><a href=''>$name</a></th>
-            <th scope='col'>$size bytes</th>
-            <th scope='col'>$modified</th>
-            <td><button type='button' class='btn btn-warning' data-name='$name' id='update'>Update</button></td>
-            <td><button type='button' class='delete_file btn btn-danger' id=$name'>Delete</button></td>
-            </tr>";
-      }
-    }
+    loadContent($_POST["currentPath"]);   
   }
 }
 
@@ -62,6 +62,26 @@ if ($_POST['action'] == "delete_file") {
   }
 }
 
+// remove file
+/*if ($_POST['action'] == "delete_file") {
+  if (file_exists($_POST["path"])) {
+    $path = "root/";
+  
+    // unlink($_POST['path'].$path);
+ rmdir($path.$_POST['path']);
+    echo 'file deleted';
+  }
+}*/
+
+
+if ($_POST["action"] === 'folders') {
+
+
+    $fpath = "root/" . $_POST["fname"];
+    
+    loadContent($fpath);
+
+  }
 
 
 if ($_POST['action'] == 'showfolder') {
