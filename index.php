@@ -58,7 +58,7 @@ include 'upload.php';
       </div>
 
       <!-- MAIN -->
-      <div class="col-9 mt-4">
+      <div class="col-9 mt-4" id="table_container">
 
         <table class="table table-hover table-bordered table-warning shadow-lg p-3 mb-5 rounded" id="table">
           <thead class="table-info">

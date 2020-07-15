@@ -12,7 +12,14 @@ $(document).ready(function () {
       method: 'POST',
       data: { action: action, currentPath: path, old_name: old_name },
       success: function (data) {
-  
+        
+        $(".path_info").empty()
+        
+        $("#table_container").prepend(`<div class="path_info" id="path">${path}</div>`)
+
+        let actualPath = $('#path').text();
+        console.log(actualPath)
+        
         let elements = JSON.parse(data)
         console.log(elements)
         for(let element of elements) {
@@ -41,6 +48,7 @@ $(document).ready(function () {
           }
 
           $(`#f_${element.name}`).on("click", function() {
+            
             $('#table').empty()
             loadFolders(`${element.path}/${element.name}`)
           })
