@@ -2,41 +2,34 @@
 
 function loadContent($path) {
 
+  $folderArray = array();
+
+
   $folders = new DirectoryIterator($path);
 
   foreach ($folders as $folder) {
     if ($folder->isDot()) continue;
-    $type = $folder->getType();
-    $name = $folder->getFilename();
-    var_dump($name);
-    $size = $folder->getSize();
-    $modified = date("F d Y H:i:s.", ($folder->getATime()));
 
-    if ($folder->isDir()) {
-      echo "<tr>
-          <th scope='col'><img src='https://image.freepik.com/free-vector/illustration-data-folder-icon_53876-6329.jpg' width='30' height='30'><a href='#' id='$name' class='link'>$name</a></th>
-          <th scope='col'>$size bytes</th>
-          <th scope='col'>$modified</th>
-          <td><button type='button' class='btn btn-warning' data-name='$name' id='update'>Update</button></td>
-          <td><button type='button' class='delete_file btn btn-danger' id='$name'>Delete</button></td>
-      </tr>";
-    } else {
-      echo "<tr>
-          <th scope='col'><img src='https://image.freepik.com/free-vector/illustration-data-folder-icon_53876-6329.jpg' width='30' height='30'><a href=''>$name</a></th>
-          <th scope='col'>$size bytes</th>
-          <th scope='col'>$modified</th>
-          <td><button type='button' class='delete_file btn btn-warning' data-name='$name' id='update'>Update</button></td>
-          <td><button type='button' class='btn btn-danger' id='$name'>Delete</button></td>
-          </tr>";
-    }
+    $folderObject = new stdClass();
+
+    $folderObject->name = $folder->getFilename();
+    $folderObject->type = $folder->getType();
+    $folderObject->size = $folder->getSize();
+    $folderObject->path = $folder->getPath();
+    $folderObject->date = date("F d Y H:i:s.", ($folder->getATime()));
+
+    array_push($folderArray, $folderObject);
 
   }
+
+  $encodedArray =json_encode($folderArray);
+  echo $encodedArray;
 
 }
 
 if (isset($_POST["action"])) {
   if ($_POST["action"] === "load") {
-    loadContent('root/');   
+    loadContent($_POST["currentPath"]);   
   }
 }
 

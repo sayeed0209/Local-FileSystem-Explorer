@@ -1,17 +1,51 @@
 $(document).ready(function () {
-  loadFolders();
 
-  function loadFolders() {
-    const action = 'load';
+  loadFolders('root/');
+
+  function loadFolders(path) {
+    var action = 'load';
     var old_name = $('#old_name').val();
+
 
     $.ajax({
       url: 'script.php',
       method: 'POST',
-      data: { action: action, old_name: old_name },
+      data: { action: action, currentPath: path, old_name: old_name },
       success: function (data) {
-        // console.log(data);
-        $('#table').append(data);
+  
+        let elements = JSON.parse(data)
+        console.log(elements)
+        for(let element of elements) {
+
+          if(element.type === "dir") {
+            $('#table').append(`
+              <tr>
+              <th scope='col'><img src='https://image.freepik.com/free-vector/illustration-data-folder-icon_53876-6329.jpg' width='30' height='30'><div class="folder_link" id="f_${element.name}">${element.name}</div></th>
+                <th scope='col'>${element.size}</th>
+                <th scope='col'>${element.date}</th>
+                <td><button type='button' class='btn btn-warning' data-name='$name' id='update'>Update</button></td>
+                <td><button type='button' class='delete_file btn btn-danger' id=$name'>Delete</button></td>
+              </tr>
+          `)
+            
+          } else if (element.type === "file") {
+            $('#table').append(`
+              <tr>
+                <th scope='col'>${element.name}</th>
+                <th scope='col'>${element.size}</th>
+                <th scope='col'>${element.date}</th>
+                <td><button type='button' class='btn btn-warning' data-name='$name' id='update'>Update</button></td>
+                <td><button type='button' class='delete_file btn btn-danger' id=$name'>Delete</button></td>
+              </tr>
+        `)
+          }
+
+          $(`#f_${element.name}`).on("click", function() {
+            $('#table').empty()
+            loadFolders(`${element.path}/${element.name}`)
+          })
+         
+        }
       },
     });
 
