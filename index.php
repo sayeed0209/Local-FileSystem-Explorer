@@ -18,7 +18,7 @@ include 'upload.php';
 <body>
   <div class="container mt-3">
     <!-- Bootstrap NavBar -->
-    <nav class="navbar navbar-expand-md navbar-dark bg-info">
+    <nav class="navbar navbar-expand-md navbar-dark bg-info" id="nav">
       <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -28,7 +28,7 @@ include 'upload.php';
         <span class="menu-collapsed"></span>
       </a>
 
-      <form action="upload.php" class="upload ml-5" method="POST" enctype="multipart/form-data">
+      <form action="upload.php" class="upload ml-5" method="POST" enctype="multipart/form-data" id="form__for__upload">
       <label> Upload File <i class="fas fa-file-download"></i>
       <input type="file" name="files" />
         </label>
@@ -37,7 +37,7 @@ include 'upload.php';
       </form>
 
       <form class="form-inline ml-5">
-        <input class="form-control mr-sm-2 ml-3 ml-6" type="search" placeholder="Search..." aria-label="Search" id="search_field">
+        <input class="form-control mr-sm-2 ml-3 ml-6 rounded-pill " type="search" placeholder="Search..." aria-label="Search" id="search_field">
         <input class="btn btn btn-info my-2 my-sm-0 " type="submit" id="search" value="Search"></input>
 
       </form>
@@ -121,7 +121,7 @@ include 'upload.php';
           <span aria-hidden="true" id="close-icon">&times;</span>
         </button>
       </div>
-      <div class="modal-body col-6" id="preview-body">
+      <div class="modal-body" id="preview-body">
       
       </div>
       <div class="modal-footer">
