@@ -15,11 +15,44 @@ $(document).ready(function () {
         $(".path_info").remove()
         
         $("#table_container").prepend(`<div class="path_info" id="path">${path}</div>`)
+
+        $("#table_container").prepend(`<div id="breadcrumbs"></div>`)
        
         
 
         let actualPath = $('#path').text();
-        console.log(actualPath)
+
+        $("#ac_path").val(actualPath)
+        
+        let pathArray = actualPath.split("/")
+
+        if(pathArray[1] == "") pathArray.pop()
+        console.log(pathArray)
+
+        for (let path of pathArray) {
+          $("#breadcrumbs").append(`<div class="crumb" id="${path}">${path}</div>/`)
+        }
+
+        $(".crumb").on("click", function(e) {
+            
+          let input = e.target.id
+
+          let newArray = pathArray.slice(0, pathArray.indexOf(input)+1)
+
+          console.log(newArray)
+
+          let newPath = newArray.join("/")
+          console.log(newPath) 
+
+          $('#table_container').empty()
+            $("#table_container").append(tableBase)
+            $("#back").remove()
+            loadFolders(newPath)
+            addButton()
+
+
+        })
+
         
         let elements = JSON.parse(data)
         
@@ -50,7 +83,8 @@ $(document).ready(function () {
 
           $(`#f_${folder.name}`).on("click", function() {
             
-            $('#table').empty()
+            $('#table_container').empty()
+            $("#table_container").append(tableBase)
             $("#back").remove()
             loadFolders(`${folder.path}/${folder.name}`)
             addButton()
@@ -242,10 +276,10 @@ $(document).ready(function () {
         $(clickedFolder).append('<ul>');
         for (let i = 0; i < dirs.length; i++) {
           // console.log(dirs[i]);
-          var icon= $('<i class="fas fa-folder"></i>').data('path', actualPath + dirs[i] + '/')
+          var icon= $('<img src="https://image.flaticon.com/icons/svg/861/861319.svg" width="20" height="20" class="icons">').data('path', actualPath + dirs[i] + '/')
           var folder = $('<li id="root" >' + dirs[i] + '</li>'
           ).data('path', actualPath + dirs[i] + '/');
-          $(folder).append(icon)
+          $(folder).prepend(icon)
           $(clickedFolder).find('ul').append(folder);
         }
       },
@@ -254,24 +288,30 @@ $(document).ready(function () {
 
 
 function addButton() {
-  $("#table_container").prepend(`<button id="back">Back</button>`)
+  $("#table_container").prepend(`<div id="back"><img src="https://image.flaticon.com/icons/svg/860/860774.svg" width="20" height="20" class="icons">Back</div>`)
 
             $("#back").on("click", function () {
               $('#table').empty()
               let path = $("#path").text()
               let arrayPath = path.split("/")
-              console.log(arrayPath)
+         
               arrayPath.pop()
-              console.log(arrayPath)
 
               if(arrayPath.length < 2) {
                 path = "root/"
               } else {
                 path = arrayPath.join("/")
               }
-              console.log(path)
-
+         
+              $('#table_container').empty()
+              $("#table_container").append(tableBase)
               loadFolders(path)
+              addButton()
+            
+
+              if (path === "root/") {
+                $("#back").remove();
+              }
             
             })
 }

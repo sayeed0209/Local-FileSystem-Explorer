@@ -30,9 +30,10 @@ include 'upload.php';
 
       
       <form action="upload.php" class="upload" method="POST" enctype="multipart/form-data">
-      <label> Upload File <i class="fas fa-file-download"></i>
-      <input type="file" name="files" />
+        <label> Upload File <i class="fas fa-file-download"></i>
+          <input type="file" name="files" />
         </label>
+        <input type="text" name="ac_path" id="ac_path" hidden>
         <input type="submit" class="btn btn btn-info my-2 my-sm-0" value="Upload" name="submit">
       </form>
 
@@ -51,7 +52,7 @@ include 'upload.php';
       <div class="col mt-4 ml-4 bg-light text-dark shadow-lg p-3 mb-5 rounded  ">
         <div class="row">
           <ul id="list-of-folders">
-            <li id="root"><i class="fas fa-folder" id="rootIcon"></i>root</li>
+            <li id="root"><img src="https://image.flaticon.com/icons/svg/861/861319.svg" width="20" height="20" class="icons" id="rootIcon">root</li>
           </ul>
 
         </div>
@@ -60,6 +61,8 @@ include 'upload.php';
 
       <!-- MAIN -->
       <div class="col-9 mt-4" id="table_container">
+
+      
 
         <table class="table table-hover shadow-lg p-3 mb-5 rounded" id="table">
           <thead class="table-info">

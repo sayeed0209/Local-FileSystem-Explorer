@@ -18,7 +18,7 @@ if(isset($_POST['submit'])){
         if($fileError === 0){
             if($fileSize < 40000000){
                 $newName = uniqid('',true).".".$fileActualExt;
-                $fileDestination = 'root/'.$newName;
+                $fileDestination = $_POST["ac_path"]. "/" . $newName;
                 move_uploaded_file($fileTmpName,$fileDestination);
                 echo 'file has uploaded sucessfully';
                 header('Location:index.php');
