@@ -11,11 +11,12 @@ ul {
   list-style-type: none;
 }
 label {
-  padding: 10px;
+  padding: 12px !important;
   background: #17a2b8;
   display: table;
   color: #fff;
   border-color: #17a2b8;
+  font-size:14px !important;
 }
 label:hover {
   background-color: #0fb7d1;
@@ -86,4 +87,8 @@ li {
 #preview-body{
     width: 65vh !important;
 
+}
+#nav{
+    width:1100px !important;
+    margin-left: 11px !important;
 }
