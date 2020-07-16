@@ -372,6 +372,10 @@ $('#close-modal').click(function () {
   $('#preview-modal').hide();
 });
 
+$('#close-icon').click(function () {
+  $('#preview-modal').hide();
+});
+
 
 
 

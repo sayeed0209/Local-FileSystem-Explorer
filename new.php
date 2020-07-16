@@ -17,6 +17,8 @@ if (isset($_POST["action"])) {
       }
     }
 
+    
+
     if ($_POST['action'] === "delete") {
       if (is_dir($_POST["path"] . "/" . $_POST["name"])) {
   

@@ -22,22 +22,22 @@ include 'upload.php';
       <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
-      <a class="navbar-brand" href="#">
+      <a class="navbar-brand mr-2" href="#">
         <i class="fas fa-book-open" id="logo"></i>
         <button type="button" class="btn btn btn-info my-2 my-sm-0" data-toggle="modal" data-target="#exampleModal" id="btn-create">New<i class="fas fa-plus-circle" id="plus"></i></button>
         <span class="menu-collapsed">Local-FileSystem-Explorer</span>
       </a>
 
-      <form action="upload.php" class="upload" method="POST" enctype="multipart/form-data">
+      <form action="upload.php" class="upload ml-5" method="POST" enctype="multipart/form-data">
       <label> Upload File <i class="fas fa-file-download"></i>
       <input type="file" name="files" />
         </label>
         <input type="submit" class="btn btn btn-info my-2 my-sm-0" value="Upload" name="submit">
       </form>
 
-      <form class="form-inline">
-        <input class="form-control mr-sm-2 ml-5" type="search" placeholder="Search" aria-label="Search" id="search_field">
-        <input class="btn btn btn-info my-2 my-sm-0" type="submit" id="search"></input>
+      <form class="form-inline ml-5">
+        <input class="form-control mr-sm-2 ml-3 ml-6" type="search" placeholder="Search..." aria-label="Search" id="search_field">
+        <input class="btn btn btn-info my-2 my-sm-0 " type="submit" id="search" value="Search"></input>
 
       </form>
 
@@ -58,7 +58,7 @@ include 'upload.php';
       <!-- MAIN -->
       <div class="col-9 mt-4" id="table_container">
 
-        <table class="table table-hover shadow-lg p-3 mb-5 rounded" id="table">
+        <table class="table table-hover shadow-lg p-3 mb-5 rounded table-borderless" id="table">
           <thead class="table-info">
             <tr>
               <th scope="col">Name</th>
@@ -117,7 +117,7 @@ include 'upload.php';
       <div class="modal-header">
         <h5 class="modal-title">Preview file</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
+          <span aria-hidden="true" id="close-icon">&times;</span>
         </button>
       </div>
       <div class="modal-body col-6" id="preview-body">
