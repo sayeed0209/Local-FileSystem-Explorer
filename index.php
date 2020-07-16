@@ -132,7 +132,7 @@ include 'upload.php';
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <div class="modal-body col-12" id="preview-body">
+      <div class="modal-body col-6" id="preview-body">
       
       </div>
       <div class="modal-footer">

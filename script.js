@@ -65,7 +65,6 @@ $(document).ready(function () {
               </tr>
         `);
           }
-
           $(`#f_${element.name}`).on('click', function () {
             $('#table').empty();
             $('#back').remove();
@@ -179,7 +178,11 @@ function showfile(filename) {
   var extention = parts[parts.length - 1];
   if (extention == 'jpg' || extention == 'png' || extention == 'jpeg') {
     $('#preview-body').append(
-      $('<img/>').attr('src', file).addClass('img-thumbnail')
+      $('<img/>').attr({
+        src:file,
+        class:'img-thumbnail',
+        // width:'350px',
+      })
     );
   } else if (extention == 'mp3') {
     $('<audio controls></audio>')
