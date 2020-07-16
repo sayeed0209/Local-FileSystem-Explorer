@@ -28,11 +28,12 @@ include 'upload.php';
         <span class="menu-collapsed"></span>
       </a>
 
+      
       <form action="upload.php" class="upload" method="POST" enctype="multipart/form-data">
       <label> Upload File <i class="fas fa-file-download"></i>
-          <input type="file" name="file" >
+      <input type="file" name="files" />
         </label>
-        <input type="submit" class="btn btn btn-info my-2 my-sm-0" value="Upload" name="upload">
+        <input type="submit" class="btn btn btn-info my-2 my-sm-0" value="Upload" name="submit">
       </form>
 
       <form class="form-inline">
@@ -112,6 +113,29 @@ include 'upload.php';
           </div>
         </div>
       </div>
+
+       <!-- preview modal -->
+      <div class="modal" tabindex="-1" role="dialog" id="preview-modal">
+          <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title">Preview file</h5>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <div class="modal-body col-12" id="preview-body">
+                
+                    </div>
+                    <div class="modal-footer">
+                  
+                         <button type="button" class="btn btn-secondary" data-dismiss="modal" id="close-modal">Close</button>
+                    </div>
+              </div>
+          </div>        
+        
+    </div>
+
 
     </div>
 

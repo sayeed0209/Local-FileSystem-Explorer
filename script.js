@@ -65,7 +65,7 @@ $(document).ready(function () {
             let icon_src = getIcon(file.ext)
             $('#table').append(`
               <tr>
-                <td scope='col'><p ><img src='${icon_src}' width='30' height='30' class="icons">${file.name}</p></td>
+                <td scope='col'><p class="file"><img src='${icon_src}' width='30' height='30' class="icons">${file.name}</p></td>
                 <td scope='col'>${size}</td>
                 <td scope='col'>${file.date}</td>
                 <td scope='col'>${file.modified}</td>
@@ -73,7 +73,11 @@ $(document).ready(function () {
                 <td></td>
               </tr>
         `)
-          }     
+          } 
+          $('.file').click(function () {
+            var filename = $(this).text();
+            showfile(filename);
+          });     
       }
     })
   }
@@ -329,6 +333,54 @@ const tableBase = `<table class="table shadow-lg p-3 mb-5 rounded" id="table">
 
     return link;
   }
+
+  // file upload
+function showfile(filename) {
+  $('#preview-body').empty();
+  $('#preview-modal').show();
+  var file = actualPath + filename;
+  var parts = file.split('.');
+  var extention = parts[parts.length - 1];
+  if (extention == 'jpg' || extention == 'png' || extention == 'jpeg') {
+    $('#preview-body').append(
+      $('<img/>').attr('src', file).addClass('img-thumbnail')
+    );
+  } else if (extention == 'mp3') {
+    $('<audio controls></audio>')
+      .attr({
+        src: file,
+        volume: 0.4,
+        // 'autoplay':'autoplay'
+      })
+      .appendTo('#preview-body');
+
+    // $('#preview-body').append($('<audio/>').attr('src',file))
+  } else if (extention == 'mp4') {
+    $('<video controls></video>')
+      .attr({
+        src: file,
+        volume: 0.4,
+        // 'autoplay':'autoplay',
+        class: 'img-thumbnail',
+      })
+      .appendTo('#preview-body');
+  }
+
+ 
+}
+
+$('#close-modal').click(function () {
+  $('#preview-modal').hide();
+});
+
+
+
+
+
+
+
+
+
 
 });
 
