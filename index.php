@@ -36,8 +36,8 @@ include 'upload.php';
       </form>
 
       <form class="form-inline">
-        <input class="form-control mr-sm-2 ml-5" type="search" placeholder="Search" aria-label="Search">
-        <input class="btn btn btn-info my-2 my-sm-0" type="submit" value="Search"></input>
+        <input class="form-control mr-sm-2 ml-5" type="search" placeholder="Search" aria-label="Search" id="search_field">
+        <input class="btn btn btn-info my-2 my-sm-0" type="submit" id="search"></input>
 
       </form>
 
@@ -58,32 +58,20 @@ include 'upload.php';
       <!-- MAIN -->
       <div class="col-9 mt-4" id="table_container">
 
-        <table class="table table-hover table-bordered table-warning shadow-lg p-3 mb-5 rounded" id="table">
+        <table class="table table-hover shadow-lg p-3 mb-5 rounded" id="table">
           <thead class="table-info">
             <tr>
               <th scope="col">Name</th>
               <th scope="col">Size</th>
+              <th scope="col">Created</th>
               <th scope="col">Modified</th>
               <th scope="col">Update</th>
               <th scope="col">Delete</th>
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <th scope="row">1</th>
-              <td>Mark</td>
-              <td>Otto</td>
-              <td><button type="button" class="btn btn-warning" id="update" data-name="folder">Update</button></td>
-              <td><button type="button" class="btn btn-danger" id='delete'>Delete</button></td>
-
-            </tr>
-            <tr>
-              <th scope="row">2</th>
-              <td>Jacob</td>
-              <td>Thornton</td>
-              <td><button type="button" class="btn btn-warning" id="update">Update</button></td>
-              <td><button type="button" class="btn btn-danger" id='delete'>Delete</button></td>
-            </tr>
+            
+            
           </tbody>
         </table>
 
@@ -98,7 +86,7 @@ include 'upload.php';
       <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
           <div class="modal-content">
-            <form action="script.php" method="POST">
+            <form>
               <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalLabel"><span id="change_title"> Create new folder</span> </h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -111,12 +99,12 @@ include 'upload.php';
                 <input type="text" id="name_input" name="folder">
                 <input type="hidden" name="action" id="action">
                 <input type="hidden" name="old_name" id="old_name">
-                <button type="submit" class="btn btn-primary" id="rename">Rename</button>
+                <button type="button" class="btn btn-primary" id="rename">Rename</button>
               </div>
 
               <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="submit" name="submit" class="btn btn-primary" id="create_file">Create folder</button>
+                <button type="button" name="submit" class="btn btn-primary" id="create_file">Create folder</button>
               </div>
             </form>
           </div>

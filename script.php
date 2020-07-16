@@ -17,6 +17,11 @@ function loadContent($path) {
     $folderObject->size = $folder->getSize();
     $folderObject->path = $folder->getPath();
     $folderObject->date = date("F d Y H:i:s.", ($folder->getATime()));
+    $folderObject->modified = date("d/m/Y H:i:s", ($folder->getCTime()));
+    $folderObject->modified = date("d/m/Y H:i:s", ($folder->getCTime()));
+    if ($folder->isFile()) {
+      $folderObject->ext = $folder->getExtension();
+  }
 
     array_push($folderArray, $folderObject);
 
@@ -33,10 +38,10 @@ if (isset($_POST["action"])) {
   }
 }
 
-if (isset($_POST["submit"])) {
+/* if (isset($_POST["submit"])) {
   if ($_POST["folder"]) {
-    $path = "root/";
-    mkdir($path . $_POST["folder"]);
+    $path = $_POST["rt"];
+    mkdir($path . "/" . $_POST["folder"]);    
     header("Location: index.php");
   }
 }
