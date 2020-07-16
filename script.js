@@ -377,7 +377,8 @@ const tableBase = `<table class="table shadow-lg p-3 mb-5 rounded" id="table">
 function showfile(filename) {
   $('#preview-body').empty();
   $('#preview-modal').show();
-  var file = actualPath + filename;
+  let actualPath = $('#path').text();
+  var file =`${actualPath}/${filename}`
   var parts = file.split('.');
   var extention = parts[parts.length - 1];
   if (extention == 'jpg' || extention == 'png' || extention == 'jpeg') {
