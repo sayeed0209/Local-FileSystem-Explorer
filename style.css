@@ -1,6 +1,8 @@
-/* #logo{
-    width:50px;
-} */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&family=Roboto&display=swap');
+/* font-family: 'Montserrat', sans-serif; */
+body{
+font-family: 'Roboto', sans-serif !important;
+}
 #plus{
     margin: 5px;
 }
@@ -26,6 +28,7 @@ input[type="file"] {
 
 .folder_link {
     cursor: pointer;
+    
 }
 
 .result {
@@ -67,4 +70,7 @@ li {
     margin-right: 10px;
     margin-left: 10px;
     cursor: pointer;
+}
+.container{
+    width: 300vh !important;
 }

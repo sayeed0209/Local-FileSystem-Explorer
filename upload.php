@@ -1,8 +1,4 @@
-
 <?php
-
-// require 'script.php';
-// upload folder
 
 if(isset($_POST['submit'])){
     $file = $_FILES['files'];

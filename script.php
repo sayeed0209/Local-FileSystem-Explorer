@@ -16,7 +16,7 @@ function loadContent($path) {
     $folderObject->type = $folder->getType();
     $folderObject->size = $folder->getSize();
     $folderObject->path = $folder->getPath();
-    $folderObject->date = date("d/m/Y H:i:s", ($folder->getATime()));
+    $folderObject->date = date("F d Y H:i:s.", ($folder->getATime()));
     $folderObject->modified = date("d/m/Y H:i:s", ($folder->getCTime()));
     $folderObject->modified = date("d/m/Y H:i:s", ($folder->getCTime()));
     if ($folder->isFile()) {
@@ -96,7 +96,6 @@ if ($_POST['action'] == 'showfolder') {
 
   $dir = array_diff($dir, array('.', '..'));
   $dir = array_values($dir);
-
   echo json_encode($dir);
 }
 

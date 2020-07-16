@@ -1,5 +1,4 @@
 $(document).ready(function () {
-
   loadFolders('root/');
 
   function loadFolders(path) {
@@ -410,6 +409,10 @@ function showfile(filename) {
 }
 
 $('#close-modal').click(function () {
+  $('#preview-modal').hide();
+});
+
+$('#close-icon').click(function () {
   $('#preview-modal').hide();
 });
 
