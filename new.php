@@ -22,7 +22,17 @@ if (isset($_POST["action"])) {
     if ($_POST['action'] === "delete") {
       if (is_dir($_POST["path"] . "/" . $_POST["name"])) {
   
-        rmdir($_POST["path"] . "/" . $_POST["name"]);
+        rmdir_recursive($_POST["path"] . "/" . $_POST["name"]);
         echo 'Folder deleted';
       }
     }
+    /*    
+    */
+    function rmdir_recursive($dir) {
+      foreach(scandir($dir) as $file) {
+          if ('.' === $file || '..' === $file) continue;
+          if (is_dir("$dir/$file")) rmdir_recursive("$dir/$file");
+          else unlink("$dir/$file");
+      }
+      rmdir($dir);
+  }
