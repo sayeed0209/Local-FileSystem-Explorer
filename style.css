@@ -76,13 +76,13 @@ li {
 /* #search {
   margin-left: 70px !important;
 } */
-#search_field {
+/*#search_field {
   margin-left: 180px !important;
   border: none !important;
   outline: none !important;
 }
 #form__for__upload{
-    margin-left:240px !important;
+    margin-left:200px !important;
 }
 #preview-body{
     width: 65vh !important;
