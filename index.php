@@ -25,10 +25,10 @@ include 'upload.php';
       <a class="navbar-brand mr-2" href="#">
         <i class="fas fa-book-open" id="logo"></i>
         <button type="button" class="btn btn btn-info my-2 my-sm-0" data-toggle="modal" data-target="#exampleModal" id="btn-create">New<i class="fas fa-plus-circle" id="plus"></i></button>
-        <span class="menu-collapsed">Local-FileSystem-Explorer</span>
+        <span class="menu-collapsed"></span>
       </a>
 
-      <form action="upload.php" class="upload ml-5" method="POST" enctype="multipart/form-data">
+      <form action="upload.php" class="upload ml-5" method="POST" enctype="multipart/form-data" id="form__for__upload">
       <label> Upload File <i class="fas fa-file-download"></i>
       <input type="file" name="files" />
         </label>
@@ -37,7 +37,7 @@ include 'upload.php';
       </form>
 
       <form class="form-inline ml-5">
-        <input class="form-control mr-sm-2 ml-3 ml-6" type="search" placeholder="Search..." aria-label="Search" id="search_field">
+        <input class="form-control mr-sm-2 ml-3 ml-6 rounded-pill " type="search" placeholder="Search..." aria-label="Search" id="search_field">
         <input class="btn btn btn-info my-2 my-sm-0 " type="submit" id="search" value="Search"></input>
 
       </form>
@@ -121,7 +121,7 @@ include 'upload.php';
           <span aria-hidden="true" id="close-icon">&times;</span>
         </button>
       </div>
-      <div class="modal-body col-6" id="preview-body">
+      <div class="modal-body" id="preview-body">
       
       </div>
       <div class="modal-footer">
