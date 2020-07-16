@@ -25,7 +25,7 @@ include 'upload.php';
       <a class="navbar-brand mr-2" href="#">
         <i class="fas fa-book-open" id="logo"></i>
         <button type="button" class="btn btn btn-info my-2 my-sm-0" data-toggle="modal" data-target="#exampleModal" id="btn-create">New<i class="fas fa-plus-circle" id="plus"></i></button>
-        <span class="menu-collapsed">Local-FileSystem-Explorer</span>
+        <span class="menu-collapsed"></span>
       </a>
 
       <form action="upload.php" class="upload ml-5" method="POST" enctype="multipart/form-data">
