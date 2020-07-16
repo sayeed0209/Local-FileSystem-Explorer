@@ -23,7 +23,7 @@ $(document).ready(function () {
         let actualPath = $('#path').text();
 
         $("#ac_path").val(actualPath)
-        
+
         let pathArray = actualPath.split("/")
 
         if(pathArray[1] == "") pathArray.pop()
@@ -412,13 +412,6 @@ function showfile(filename) {
 $('#close-modal').click(function () {
   $('#preview-modal').hide();
 });
-
-
-
-
-
-
-
 
 
 
