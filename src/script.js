@@ -17,8 +17,6 @@ $(document).ready(function () {
 
         $("#table_container").prepend(`<div id="breadcrumbs"></div>`)
        
-        
-
         let actualPath = $('#path').text();
 
         $("#ac_path").val(actualPath)
@@ -48,8 +46,6 @@ $(document).ready(function () {
             $("#back").remove()
             loadFolders(newPath)
             addButton()
-
-
         })
 
         
@@ -151,7 +147,6 @@ $(document).ready(function () {
     });
   })
 
-
   $(document).on('click', '#update', function (e) {
     let folderName = $(this).data('name');
     console.log(folderName);
@@ -174,8 +169,7 @@ $(document).ready(function () {
       method: 'POST',
       data: { path: path, action:action, newName:newName, oldName: oldName},
       success: function (data) {
-        location.replace("index.php")
-       
+        location.replace("index.php")      
       },
     });
 
@@ -193,8 +187,7 @@ $(document).ready(function () {
         data: { path: path, action: action, name:name },
         success: function (data) {
           alert(data);
-          location.replace("index.php");
-  
+          location.replace("index.php");  
         },
       });
     }
@@ -206,9 +199,8 @@ $(document).ready(function () {
     
     var input = $("#search_field").val()
     var action = "search"
-    
+   
     $.ajax({
-  
       url: 'search.php',
       method: 'POST',
       data: { action: action, input:input},
@@ -273,8 +265,6 @@ $(document).ready(function () {
       data: { actualPath: actualPath, action: 'showfolder' },
       success: function (data) {
         var dirs = JSON.parse(data);
-        console.log(dirs);
-        // alert(data)
         $(clickedFolder).find('ul').remove();
         $(clickedFolder).append('<ul>');
         for (let dir of dirs) {
@@ -290,7 +280,6 @@ $(document).ready(function () {
           $(`img[data="${actualPath}${dir}/"]`).on("click", function(e) {
             let npath = $(this).attr('data');
 
-            console.log(npath)
             $('#table_container').empty()
             $("#table_container").append(tableBase)
             loadFolders(npath)
@@ -326,7 +315,6 @@ function addButton() {
               loadFolders(path)
               addButton()
             
-
               if (path === "root/") {
                 $("#back").remove();
               }
@@ -409,17 +397,15 @@ function showfile(filename) {
       .attr({
         src: file,
         volume: 0.4,
-        // 'autoplay':'autoplay'
       })
       .appendTo('#preview-body');
 
-    // $('#preview-body').append($('<audio/>').attr('src',file))
+
   } else if (extention == 'mp4') {
     $('<video controls></video>')
       .attr({
         src: file,
         volume: 0.4,
-        // 'autoplay':'autoplay',
         class: 'img-thumbnail',
       })
       .appendTo('#preview-body');
@@ -428,16 +414,16 @@ function showfile(filename) {
  
 }
 
-$('#close-modal').click(function () {
-  $('#preview-modal').hide();
-});
+    $('#close-modal').click(function () {
+      $('#preview-modal').hide();
+    });
 
-$('#close-icon').click(function () {
-  $('#preview-modal').hide();
-});
+    $('#close-icon').click(function () {
+      $('#preview-modal').hide();
+    });
 
-$("#rootIcon").on("click", function() {
-  location.reload("index.php")
+    $("#rootIcon").on("click", function() {
+      location.reload("index.php")
 })
 
 

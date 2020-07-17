@@ -73,22 +73,9 @@ li {
 .container {
   width: 300vh !important;
 }
-/* #search {
-  margin-left: 70px !important;
-} */
+
 #search_field {
   margin-left: 180px !important;
   border: none !important;
   outline: none !important;
-}
-/*#form__for__upload{
-    margin-left:200px !important;
-}
-#preview-body{
-    width: 65vh !important;
-
-}
-#nav{
-    width:1100px !important;
-    margin-left: 11px !important;
 }
