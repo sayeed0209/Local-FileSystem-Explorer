@@ -65,6 +65,10 @@ $(document).ready(function () {
             files.push(element)
           }
         }
+
+        folders.sort((a, b) => (a.name > b.name) ? 1 : -1)
+        files.sort((a, b) => (a.name > b.name) ? 1 : -1)
+
         for(let folder of folders) {  
           
             let size = sizing(folder);
@@ -432,6 +436,9 @@ $('#close-icon').click(function () {
   $('#preview-modal').hide();
 });
 
+$("#rootIcon").on("click", function() {
+  location.reload("index.php")
+})
 
 
 });
